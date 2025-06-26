@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker</title>
+    <link rel = "icon" type = "image/x-icon" href = "icon.png">
+    <link href="https://fonts.cdnfonts.com/css/exepixelperfect" rel="stylesheet">
+</head>
+<body>
+    <h1 id="title">Month</h1>
+    <h2 id="subtitle">Monthly Habit Tracker</h2>
+    
+    <div id="CalendarContainer">
+        <div id="CalendarDiv">
+            <div id="CalendarHeading">
+                <p id="HabitTitle">My New Habit</p>
+                <p id="TotalDays">0/31</p>
+            </div>
+            <div id="CalendarContent">
+                <div id="Tracker">
+                    <div class="Days">
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                    </div>
+                    <div class="Days">
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                    </div>
+                    <div class="Days">
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                    </div>
+                    <div class="Days">
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                    </div>
+                    <div class="Days">
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                        <div class="Day">1</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="ResetButton">Reset Button</button>
+</body>
+<style>
+    body{
+        background-image: url("image.png");
+        background-size: 500px;
+        text-align: center;
+        font-family: 'EXEPixelPerfect', sans-serif;
+        color: rgb(97, 15, 97);
+    }
+
+    #title{
+        margin: top 100px;
+        line-height: 10px;
+    }
+
+    #subtitle{
+        opacity:0.7;
+        font-size:18px;
+        margin-bottom: 20px;
+    }
+
+    #CalendarContainer{
+        display:flex;
+        justify-content: end;
+    }
+
+    #CalendarDiv{
+        background-color:rgb(255, 246, 255);
+        border-radius: 10px 10px 20px 20px;
+        margin: auto;
+        align-content: center;
+        text-align: center;
+    }
+
+    #CalendarHeading{
+        display:flex;
+        justify-content:space-between;
+        border-radius: 10px 10px 0px 0px;
+        border: 2px solid rgb(176, 138, 174);
+        padding: 0px 20px;
+        font-size: 20px;
+        background-color: rgb(239, 169, 218);
+        line-height: 0px;
+    }
+
+    #CalendarContent{
+        border: 2px solid rgb(176, 138, 174);
+        padding: 20px;
+    }
+
+    .Days{
+        display: flex;
+    }
+
+    .Day{
+        width: 30px;
+        margin: 3px;
+        padding: 10px;
+        font-size: 15px;
+        text-align: center;
+        border-radius: 20px;
+        /* background-color: rgb(239, 169, 218); */
+    }
+
+    #ResetButton{
+        background-color: rgb(239, 169, 218);
+        border: 2px solid rgb(176, 138, 174);
+        font-family: 'EXEPixelPerfect', sans-serif;
+        font-size: 20px;
+        padding: 10px 20px;
+        border-radius: 8px;
+        transition: 0.3s;
+        color:rgb(97, 15, 97)
+    }
+
+    #ResetButton:hover {
+        background-color: rgb(176, 138, 174);
+        color: rgb(239, 169, 218);
+    }
+</style>
+<script>
+    var date = new Date();
+    console.log(date);
+
+    var currentMonth = date.getMonth();
+    var currentDay = date.getDay();
+    var currentDate = date.getDate();
+    var currentYear = date.getFullYear();
+
+    console.log(currentMonth); //current month - 1
+    console.log(currentDay); //day of the week
+    console.log(currentDate); //current date
+    console.log(currentYear); //year
+
+    var month = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+    ];
+
+    var title = document.getElementById("title");
+    title.innerHTML = "⋆. 𐙚 ˚" + month[currentMonth] + "˚ 𐙚 .⋆";
+
+    var habitTitle = document.getElementById("HabitTitle");
+    habitTitle.onclick = function() {
+
+        let habits = prompt("What's your habit?", habitTitle.innerHTML);
+        if (habits.length == 0) {
+            habitTitle.innerHTML = "Click to set your habit";
+        }else {
+            habitTitle.innerHTML = habits;
+        };
+
+    };
+
+    var daysInTheMonthList = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    var daysInThisMonth = daysInTheMonthList[currentMonth];
+
+    var daysCompleted = 0;
+    var totalDays = document.getElementById("TotalDays");
+    totalDays.innerHTML = "0/" + daysInThisMonth;
+
+    var dayCount = 0;
+    var rowCount = 0;
+    var days = document.getElementsByClassName("Days");
+
+    for (var i = 0; i < days.length; i++) {
+        var day = days[rowCount].getElementsByClassName("Day");
+        for (var j = 0; j < day.length; j++) {
+            if (dayCount == currentDate - 1) {
+                day[j].setAttribute("style", "background-color: rgb(239, 169, 218)");
+                day[j].setAttribute("style", "border: 2px solid rgb(176, 138, 174)");
+            }
+
+            if (dayCount < daysInThisMonth) {
+                day[j].innerHTML = dayCount + 1;
+                day[j].setAttribute("id", "day" + (dayCount + 1));
+                dayCount++;
+            } else {
+                day[j].innerHTML = "";
+                day[j].setAttribute("style", "background-color: rgb(255, 246, 255)");
+            }
+        }
+        rowCount++;
+    }
+
+    var completed = new Array(31);
+    for (var i = 0; i < dayCount; i++) {
+        var tempString = "" + (currentMonth + 1) + "-" + (i + 1) + "-" + currentYear;
+        console.log("storing date:" + tempString);
+        var tempDay = localStorage.getItem(tempString);
+        console.log(tempDay);
+        if (tempDay == null || tempDay == "false") {
+            localStorage.setItem(tempString, "false");
+        } else if (tempDay == "true") {
+            daysCompleted++;
+        }
+        totalDays.innerHTML = daysCompleted + "/" + daysInThisMonth;
+    }
+
+    console.log("completed array: " + completed);
+    console.log("total days completed: " + daysCompleted);
+
+    for (var i = 0; i < currentDate; i++) {
+        var tempString = "" + (currentMonth + 1) + "-" + (i + 1) + "-" + currentYear;
+        console.log(tempString);
+
+        var ChosenDay = localStorage.getItem(tempString);
+        console.log(i + 1 + ":" + ChosenDay);
+        var ChosenDayDiv = document.getElementById("day" + (i + 1));
+        if (ChosenDay === "true") {
+            ChosenDayDiv.style.backgroundColor = "rgb(239, 169, 218)"
+        } else if (ChosenDay === "false") {
+            ChosenDayDiv.style.backgroundColor = "rgb(255, 246, 255)"
+        }
+    }
+
+    var dayDivs = document.querySelectorAll(".Day");
+    for (var i = 0; i < currentDate; i++) {
+        dayDivs[i].onclick = function (e) {
+            var num = e.target.innerText;
+            var selectedDate = document.getElementById(e.target.id);
+            var storageString = "" + (currentMonth + 1) + "-" + num + "-" + currentYear;
+
+            if (localStorage.getItem(storageString) === "false") {
+                selectedDate.style.transition = "0.3s";
+                selectedDate.style.backgroundColor = "rgb(239, 169, 218)";
+                localStorage.setItem(storageString, true);
+                daysCompleted++;
+            } else if(localStorage.getItem(storageString) === "true") {
+                selectedDate.style.transition = "0.3s";
+                selectedDate.style.backgroundColor = "rgb(255, 246, 255)";
+                localStorage.setItem(storageString, false);
+                daysCompleted--;
+            }
+            totalDays.innerHTML = daysCompleted + "/" + dayCount;
+            console.log(daysCompleted, currentDate);
+            if (daysCompleted == currentDate) {
+                alert("Great progress!!");
+            }
+        }
+    }
+
+    var resetButton = document.getElementById("ResetButton");
+    resetButton.onclick = function () {
+        for (var i = 0; i < dayCount; i++) {
+            var tempStrings = "" + (currentMonth + 1) + "-" + (i + 1) + "-" + currentYear;
+            localStorage.setItem(tempStrings, "false");
+            var curDay = document.getElementById("day" + (i + 1));
+            curDay.style.transition = "0.3s";
+            curDay.style.backgroundColor = "rgb(255, 246, 255)";
+        } 
+        daysCompleted = 0;
+        totalDays.innerHTML = daysCompleted + "/" + daysInTheMonth;
+    }
+
+</script>
+</html>
